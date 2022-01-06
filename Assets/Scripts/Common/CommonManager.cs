@@ -22,6 +22,7 @@ public class CommonManager
     {
         inTrigger = inTriggerBool;
         dialogTrigger = dialogueTrigger;
+        dialogTrigger.activateVisualCue(inTrigger);
     }
     public static void setTriggerInfo(bool inTriggerBool)
     {

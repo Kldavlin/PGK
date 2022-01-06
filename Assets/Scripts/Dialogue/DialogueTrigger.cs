@@ -20,18 +20,6 @@ public class DialogueTrigger : MonoBehaviour
         visualCue.SetActive(false);
     }
 
-    public void Update()
-    {
-        if (CommonManager.getInTrigger())
-        {
-            visualCue.SetActive(true);
-        }
-        else
-        {
-            visualCue.SetActive(false);
-        }
-    }
-
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == PLAYER_TAG)
@@ -44,12 +32,17 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == PLAYER_TAG)
         {
-            CommonManager.setTriggerInfo(false);
+            CommonManager.setTriggerInfo(false, this);
         }
     }
 
     public void triggerDialog()
     {
         DialogManager.getInstance().enterDialogueMode(inkJson);
+    }
+
+    public void activateVisualCue(bool activate)
+    {
+        visualCue.SetActive(activate);
     }
 }
